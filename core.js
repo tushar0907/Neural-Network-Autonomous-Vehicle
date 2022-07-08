@@ -13,7 +13,12 @@ const networkCtx = networkCanvas.getContext("2d");
 const road = new Road(carCanvas.width / 2, carCanvas.width * 0.9);
 
 
-const cars = new Car(road.getLaneCenter(1), 100, 50, 80, "AI");
+
+const N = 100;
+const cars = generateCars(N);
+
+
+
 const traffic = [
     new Car(road.getLaneCenter(1), -100, 50, 80, "DUMMY", 2)
 ];
@@ -26,7 +31,6 @@ function generateCars(N) {
         cars.push(new Car(road.getLaneCenter(1), 100, 30, 50, "AI"));
     }
     return cars;
-
 }
 
 
@@ -34,17 +38,30 @@ function animate(time) {
     for (let i = 0; i < traffic.length; i++) {
         traffic[i].update(road.borders, []);
     }
-    car.update(road.borders, traffic);
+
+    for (let i = 0; i < cars.length; i++) {
+        cars[i].update(road.borders, traffic);
+    }
+
 
     carCanvas.height = window.innerHeight;
     networkCanvas.height = window.innerHeight;
+
+
     carCtx.save();
-    carCtx.translate(0, -car.y + carCanvas.height * 0.8);
+    carCtx.translate(0, -cars[0].y + carCanvas.height * 0.8);
+
+
+
     road.draw(carCtx);
     for (let i = 0; i < traffic.length; i++) {
         traffic[i].draw(carCtx, "black");
     }
-    car.draw(carCtx, "blue");
+
+
+    for (let i = 0; i < cars.length; i++) {
+        cars[i].draw(carCtx, "blue");
+    }
 
     carCtx.restore();
 
