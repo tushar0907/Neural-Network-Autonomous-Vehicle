@@ -1,12 +1,11 @@
 class Sensor {
     constructor(car) {
         this.car = car;
-        this.rayCount = 4;
-        this.rayLength = 180;
+        this.rayCount = 5;
+        this.rayLength = 150;
         this.raySpread = Math.PI / 2;
 
         this.rays = [];
-
         this.readings = [];
     }
 
@@ -63,6 +62,7 @@ class Sensor {
             this.rays.push([start, end]);
         }
     }
+
     draw(ctx) {
         for (let i = 0; i < this.rayCount; i++) {
             let end = this.rays[i][1];
@@ -70,10 +70,9 @@ class Sensor {
                 end = this.readings[i];
             }
 
-
             ctx.beginPath();
             ctx.lineWidth = 2;
-            ctx.strokeStyle = "yellow";
+            ctx.strokeStyle = "#455054";
             ctx.moveTo(
                 this.rays[i][0].x,
                 this.rays[i][0].y
@@ -81,7 +80,6 @@ class Sensor {
             ctx.lineTo(
                 end.x,
                 end.y
-
             );
             ctx.stroke();
 
@@ -95,9 +93,8 @@ class Sensor {
             ctx.lineTo(
                 end.x,
                 end.y
-
             );
             ctx.stroke();
-        };
-    };
+        }
+    }
 }
