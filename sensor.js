@@ -17,7 +17,8 @@ class Sensor {
                 this.#getReading(
                     this.rays[i],
                     roadBorders,
-                    traffic)
+                    traffic
+                )
             );
         }
     }
@@ -65,8 +66,7 @@ class Sensor {
         this.rays = [];
         for (let i = 0; i < this.rayCount; i++) {
             const rayAngle = lerp(
-                this.raySpread / 2,
-                -this.raySpread / 2,
+                this.raySpread / 2, -this.raySpread / 2,
                 this.rayCount == 1 ? 0.5 : i / (this.rayCount - 1)
             ) + this.car.angle;
 
@@ -90,7 +90,7 @@ class Sensor {
 
             ctx.beginPath();
             ctx.lineWidth = 2;
-            ctx.strokeStyle = "#455054";
+            ctx.strokeStyle = "#450054";
             ctx.moveTo(
                 this.rays[i][0].x,
                 this.rays[i][0].y

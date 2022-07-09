@@ -1,8 +1,13 @@
 body {
     margin: 0;
-    background: rgb(18, 82, 0);
+    background: #fad39d;
+    background: -webkit-linear-gradient(to right, #fad39d, #cc995a);
+    background: linear-gradient(to right, #fad39d, #cc995a);
+
     overflow: hidden;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #carCanvas {
@@ -10,5 +15,24 @@ body {
 }
 
 #networkCanvas {
-    background : black;
+    background: url("https://opengameart.org/sites/default/files/road_0.png");
+    background-size: cover;
+    color: black
+}
+
+#verticalButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 5px 7px 5px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: blue;
 }
